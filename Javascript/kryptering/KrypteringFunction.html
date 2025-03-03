@@ -14,15 +14,19 @@
 </html>
 <script>
     let ord="er det"
-    let kryptering = ord.charCodeAt(2)
-    let ascii=String.fromCharCode()
+    let setning=[]
+    
+
     function krypteringsløsning(){
-        for(i=0;i<ord.length;i++){
-            kryptering = ord.charCodeAt(i)
-            
+        for(let i=0;i<ord.length;i++){
+            let kryptering = ord.charCodeAt(i)
+            setning.push(kryptering)
+            let ascii=String.fromCharCode(kryptering)
+            setning2.push(ascii)
 
         }
+        console.log(setning)
+        
     }
-    console.log(kryptering)
-    krypteringsløsning()
+    
 </script>
