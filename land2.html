@@ -1,0 +1,15 @@
+<body>
+    <button>Klikk her</button>
+</body>
+<script>
+    let knappEl=document.querySelector("button")
+    knappEl.addEventListener("click", land)
+
+    async function land() {
+        const data = await fetch ("Land.json")
+        const json = await data.json()
+
+        console.log(json.Norden[1].Land)
+    }
+
+</script>
