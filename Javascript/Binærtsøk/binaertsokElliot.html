@@ -1,0 +1,26 @@
+<script>
+    let liste=[2,4,5,6,7,8,9,11,13,14,16,18,19,21,22,24,25,27,28,30]
+    let maaltall=19
+function binaertSok(liste, maaltall){
+    
+    let start=0
+    let slutt=liste.length-1
+    while(start<=slutt){
+        // FINNER MIDTEN
+        let midten=Math.floor((start+slutt)/2)
+        
+        if(liste[midten]==maaltall){
+            return midten
+        }
+        else if(liste[midten]<maaltall){
+            start=midten+1
+        }
+        else{
+            slutt=midten-1
+        }
+    }
+}
+
+
+console.log((binaertSok(liste,maaltall)))
+</script>
