@@ -1,0 +1,16 @@
+<script>
+    let a = prompt("hvilket tall vil du A skal være")
+    let b = prompt("hvilket tall vil du B skal være")
+    let c = prompt("hvilket tall vil du C skal være")
+
+    d=(b**2)-4*a*c
+    if (d<0){
+        console.log("kvadratroten er negativ(-)")
+    }
+    else{
+    let x_1 = (-b + Math.sqrt(d) /(2*a))
+    let x_2 = (-b - Math.sqrt(d) /(2*a))
+
+    console.log(`Den ene verdien for x er ${x_1} og den andre verdien er ${x_2}`)
+    }
+</script>
