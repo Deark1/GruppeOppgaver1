@@ -1,0 +1,52 @@
+<input type="text">
+<ul>
+
+</ul>
+<button>Trykk her</button>
+
+<script>
+    let listeEL = document.querySelector("ul")
+    let InputEL = document.querySelector("input")
+    let knappEL = document.querySelector("button")
+
+    knappEL.addEventListener("click", leggTilFilm)
+
+    let filmer = []
+
+    lagListe()
+
+    function lagListe(){
+        if(localStorage.filmListe){
+            let tekst = localStorage.filmListe
+            filmer = tekst.split(":")
+        }
+    
+    listeEL.innerHTML=""
+
+    for(let i=0;i<filmer.length;i++){
+        let liEL = document.createElement("li")
+        liEL.innerHTML=filmer[i]
+
+        listeEL.appendChild(liEL)
+    }
+}
+
+function leggTilFilm(){
+    let nyFilm = InputEL.value
+    filmer.push(nyFilm)
+
+    let tekst=""
+
+    for(let i=0;i<filmer.length;i++){
+        if(i==0){
+        tekst+=filmer[i]
+    }
+    else{
+        tekst+=`: ${filmer[i]}`
+    }
+    }
+    localStorage.filmListe=tekst
+   
+    lagListe()
+}
+</script>

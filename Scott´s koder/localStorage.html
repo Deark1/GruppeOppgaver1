@@ -1,0 +1,16 @@
+<div id="hoved">
+    <h1>Dette er ditt 1. besøk</h1>
+</div>
+
+<script>
+    let H1EL = document.querySelector("h1")
+    if (localStorage.anatallBesok){
+        localStorage.anatallBesok=Number(localStorage.anatallBesok)+1
+    }
+    else{
+        localStorage.anatallBesok=1
+    }
+
+
+    H1EL.innerHTML=`Antall ganger du har besøkt siden: ${localStorage.anatallBesok}.`
+</script>
