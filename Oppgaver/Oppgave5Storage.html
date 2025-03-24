@@ -1,0 +1,38 @@
+<label for="farge">Velg din favorittfarge:</label>
+
+<select id="farge">
+    <option value="purple">Lilla</option>
+    <option value="red">Rød</option>
+    <option value="blue">Blå</option>
+    <option value="green">Grønn</option>
+    <option value="yellow">Gul</option>
+    <option value="orange">Oransje</option>
+    <option value="pink">Rosa</option>
+    <option value="brown">Brun</option>
+    <option value="gray">Grå</option>
+</select>
+
+<p id="melding">Bakgrunnsfargen endres basert på ditt valg!</p>
+<button>reset</button>
+<script>
+    let knappEl = document.querySelector("button");
+    let dropdown = document.getElementById("farge"); 
+    let meldingEl = document.getElementById("melding");
+
+    if(Number(localStorage.antallBesok)>1){
+        localStorage.antallBesok=Number(localStorage.antallBesok)+1
+
+        dropdown.addEventListener("change", function() {
+        let valgtFarge = dropdown.value; 
+        document.body.style.backgroundColor = valgtFarge; 
+        meldingEl.innerText = "Du valgte fargen: " + dropdown.options[dropdown.selectedIndex].text;
+    });}
+    
+    else{
+        localStorage.antallBesok=1
+    }
+    
+    knappEl.addEventListener("click", localStorage.removeItem("antallBesok"));
+    
+    
+</script>

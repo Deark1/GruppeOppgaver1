@@ -1,0 +1,48 @@
+<input type="text">
+<ul></ul>
+<button>Trykk her</button>
+
+<script>
+    let listeEl = document.querySelector("ul");
+    let inputEl = document.querySelector("input");
+    let knappEl = document.querySelector("button");
+
+    knappEl.addEventListener("click", leggTilFilm);
+
+    let filmer = [];
+    lagliste();
+
+    function lagliste() {
+        if (localStorage.FilmListe) {
+            let tekst = localStorage.FilmListe;
+            filmer = tekst.split(":");
+        }
+
+        listeEl.innerHTML = "";
+
+        for (let i = 0; i < filmer.length; i++) {
+            let liEl = document.createElement("li");
+            liEl.innerHTML = filmer[i];
+
+            listeEl.appendChild(liEl);
+        }
+    }
+
+    function leggTilFilm() {
+        let nyFilm = inputEl.value;
+        filmer.push(nyFilm);
+
+        let tekst = "";
+        for (let i = 0; i < filmer.length; i++) {
+            if (i == 0) {
+                tekst += filmer[i];
+            } else {
+                tekst += ":" + filmer[i];
+            }
+        }
+
+        localStorage.FilmListe = tekst;
+        lagliste(); // Oppdaterer listen visuelt
+        inputEl.value = ""; // Tømmer input-feltet etter å ha lagt til en film
+    }
+</script>

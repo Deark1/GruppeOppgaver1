@@ -1,0 +1,27 @@
+<label for="blaa">Blå</label>
+<input type="radio" id="blaa">
+
+<button id="refresh_page" onclick="location.reload()">Apply Color</button>
+
+<p id="melding">Bakgrunnsfargen skal endres basert på ditt valg!</p>
+<button id="reset_button">reset</button>
+<script>
+    let radio = document.getElementById("farge"); 
+    let meldingEl = document.getElementById("melding");
+    
+  if(!localStorage.getItem('antallbesok')){
+    localStorage('antallbesok','0')
+  }
+  localStorage.antallBesok = Number(localStorage.antallBesok) + 1;
+    
+
+  if(Number(localStorage.antallbesok)>1 && radio.checked){
+    document.body.style.backgroundColor='blue';
+    meldingEl.innerText="Du valgte fargen blå"
+  }
+
+
+    knappEl.addEventListener("click", localStorage.removeItem("antallBesok"));
+
+    
+</script>
