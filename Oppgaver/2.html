@@ -1,0 +1,48 @@
+<label for="blaa">Blå</label>
+<input type="radio" id="blaa">
+
+<button id="refresh_page" onclick="refreshPage()">Apply Color</button>
+
+<p id="melding">Bakgrunnsfargen skal endres basert på ditt valg!</p>
+<button id="reset_button">Reset</button>
+
+<script>
+    let radio = document.getElementById("blaa");
+    let meldingEl = document.getElementById("melding");
+    let refreshButton = document.getElementById("refresh_page");
+    let resetButton = document.getElementById("reset_button");
+
+    // Hvis 'antallBesok' ikke er satt, initialiser det til 0
+    if (!localStorage.getItem('antallBesok')) {
+        localStorage.setItem('antallBesok', '0');
+    }
+
+    // Øk besøksantallet
+    let besok = Number(localStorage.getItem('antallBesok')) + 1;
+    localStorage.setItem('antallBesok', besok);
+
+    // Vis knappen hvis det er andre eller flere besøk
+    if (besok > 1) {
+        refreshButton.style.display = "inline-block"; 
+    } else {
+        refreshButton.style.display = "none"; 
+    }
+
+    // Hvis besøk er større enn 1, og radio-knappen er valgt, sett bakgrunnsfargen til blå
+    if (besok > 1 && radio.checked) {
+        document.body.style.backgroundColor = 'blue';
+        meldingEl.innerText = "Du valgte fargen: blå";
+    }
+
+    // Funksjon for å oppdatere siden når knappen trykkes
+    function refreshPage() {
+        location.reload();
+    }
+
+    // Reset besøksteller og last siden på nytt
+    resetButton.addEventListener("click", function() {
+        localStorage.removeItem("antallBesok");
+        location.reload();
+    });
+
+</script>
