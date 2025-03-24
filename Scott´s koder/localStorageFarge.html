@@ -1,10 +1,11 @@
     <input type="color" id="fargeVelger">
     <button id="lagre">Lagre farge</button>
-    <a href="mottaker.html">link</a>
+    
 
     <button id="refresh" onclick="location.reload()">apply color</button>
 
     <button id="reset">Reset farge</button>
+    <a href="mottaker.html">link</a>
 
     <script>
         const fargeVelger = document.getElementById("fargeVelger");
@@ -30,7 +31,11 @@
 
 
         resetButton.addEventListener("click", function(){
-            document.body.style.backgroundColor='white';
+            fargeVelger.value= "#ffffff";
+            document.body.style.backgroundColor = "#ffffff";
+        
+        // Lagre den hvite fargen i localStorage
+        localStorage.setItem("farge", "#ffffff")
         })
     </script>
 
