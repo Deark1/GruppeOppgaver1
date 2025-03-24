@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilpasset nettside med fargede klosser</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .color-box {
+            width: 50px;
+            height: 50px;
+            display: inline-block;
+            margin: 10px;
+            border: 2px solid #000;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Velkommen til den tilpassede nettsiden!</h1>
+    <div id="content"></div>
+    <div class="container" id="inputForm">
+        <h2>Angi dine favorittfarger:</h2>
+        <input type="color" id="color1" value="#ff0000" onchange="updateColorBox('color1')">
+        <input type="color" id="color2" value="#00ff00" onchange="updateColorBox('color2')">
+        <input type="color" id="color3" value="#0000ff" onchange="updateColorBox('color3')">
+
+        <div id="colorBoxes">
+            <div class="color-box" id="box1"></div>
+            <div class="color-box" id="box2"></div>
+            <div class="color-box" id="box3"></div>
+        </div>
+
+        <button onclick="savePreferences()">Lagre preferanser</button>
+    </div>
+    <button onclick="deleteCookies()">Slett informasjonskapsler</button>
+
+    <script>
+        // Funksjon for å sette cookies
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = name + "=" + value + ";" + expires + ";path=/";
+        }
+
+        // Funksjon for å hente cookies
+        function getCookie(name) {
+            let nameEQ = name + "=";
+            let ca = document.cookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+                if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+            }
+            return null;
+        }
+
+        // Funksjon for å sjekke om brukerens preferanser allerede er lagret
+        function checkPreferences() {
+            let color1 = getCookie("color1");
+            let color2 = getCookie("color2");
+            let color3 = getCookie("color3");
+
+            if (color1 && color2 && color3) {
+                document.body.style.backgroundColor = color1;
+                document.body.style.color = color2;
+                document.getElementById("content").innerHTML = "<h2>Velkommen tilbake!</h2><p>Din favorittfarge er: <span style='color:" + color2 + ";'>" + color2 + "</span></p>";
+                document.getElementById("inputForm").style.display = "none";
+
+                // Oppdater boksene med de lagrede fargene
+                document.getElementById("box1").style.backgroundColor = color1;
+                document.getElementById("box2").style.backgroundColor = color2;
+                document.getElementById("box3").style.backgroundColor = color3;
+            } else {
+                document.getElementById("content").innerHTML = "<h2>Velkommen til ditt første besøk!</h2><p>Angi dine favorittfarger nedenfor.</p>";
+            }
+        }
+
+        // Funksjon for å lagre brukerens preferanser i cookies
+        function savePreferences() {
+            let color1 = document.getElementById("color1").value;
+            let color2 = document.getElementById("color2").value;
+            let color3 = document.getElementById("color3").value;
+
+            setCookie("color1", color1, 365);
+            setCookie("color2", color2, 365);
+            setCookie("color3", color3, 365);
+
+            // Tilpass bakgrunn og tekstfarge basert på brukerens preferanser
+            document.body.style.backgroundColor = color1;
+            document.body.style.color = color2;
+            document.getElementById("content").innerHTML = "<h2>Velkommen tilbake!</h2><p>Din favorittfarge er: <span style='color:" + color2 + ";'>" + color2 + "</span></p>";
+            document.getElementById("inputForm").style.display = "none";
+
+            // Oppdater boksene med de valgte fargene
+            document.getElementById("box1").style.backgroundColor = color1;
+            document.getElementById("box2").style.backgroundColor = color2;
+            document.getElementById("box3").style.backgroundColor = color3;
+        }
+
+        // Funksjon for å oppdatere fargene på boksene når farger endres
+        function updateColorBox(colorId) {
+            let color = document.getElementById(colorId).value;
+            let boxId = "box" + colorId.charAt(colorId.length - 1); // f.eks. 'box1' for 'color1'
+            document.getElementById(boxId).style.backgroundColor = color;
+        }
+
+        // Funksjon for å slette informasjonskapsler
+        function deleteCookies() {
+            document.cookie = "color1=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            document.cookie = "color2=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            document.cookie = "color3=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
+            location.reload(); // Last inn siden på nytt for å tilbakestille
+        }
+
+        // Sjekk brukerens preferanser når siden lastes
+        checkPreferences();
+    </script>
+
+</body>
+</html>

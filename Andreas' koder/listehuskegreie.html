@@ -1,0 +1,50 @@
+<input type="text" placeholder="Skriv inn noe du vil huske!">
+<ul></ul>
+<button>Legg til i Huskeliste</button>
+
+<script>
+    const listeEl = document.querySelector("ul");
+    const inputEl = document.querySelector("input");
+    const knappEl = document.querySelector("button");
+
+    knappEl.addEventListener("click", leggTilIListe);
+
+    let filmer = [];
+
+    // Initialiser listen
+    oppdaterListe();
+
+    function oppdaterListe() {
+        // Hent filmer fra localStorage hvis de finnes
+        if (localStorage.filmliste) {
+            filmer = localStorage.filmliste.split(":");
+        }
+
+        // Tøm listen i HTML
+        listeEl.innerHTML = "";
+
+        // Legg til filmer i listen
+        filmer.forEach(film => {
+            const liEl = document.createElement("li");
+            liEl.textContent = film;
+            listeEl.appendChild(liEl);
+        });
+    }
+
+    function leggTilIListe() {
+        const nyFilm = inputEl.value.trim();
+
+        if (nyFilm) {
+            filmer.push(nyFilm);
+
+            // Oppdater localStorage
+            localStorage.filmliste = filmer.join(":");
+
+            // Oppdater listen i HTML
+            oppdaterListe();
+
+            // Tøm input-feltet
+            inputEl.value = "";
+        }
+    }
+</script>
