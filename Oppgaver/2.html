@@ -52,7 +52,8 @@
     // Reset besøksteller og last siden på nytt
     resetButton.addEventListener("click", function() {
         localStorage.removeItem("antallBesok");
-        
+        localStorage.removeItem("fargevalg"); // Fjern fargevalg også
+        location.reload();
     });
 
 </script>
