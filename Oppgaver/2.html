@@ -17,32 +17,42 @@
         localStorage.setItem('antallBesok', '0');
     }
 
-    // Øk besøksantallet
+    // Øk besøksteller
     let besok = Number(localStorage.getItem('antallBesok')) + 1;
     localStorage.setItem('antallBesok', besok);
 
-    // Vis knappen hvis det er andre eller flere besøk
+    // Hvis det er andre eller flere besøk, vis "Apply Color"-knappen
     if (besok > 1) {
         refreshButton.style.display = "inline-block"; 
     } else {
         refreshButton.style.display = "none"; 
     }
 
-    // Hvis besøk er større enn 1, og radio-knappen er valgt, sett bakgrunnsfargen til blå
-    if (besok > 1 && radio.checked) {
-        document.body.style.backgroundColor = 'blue';
-        meldingEl.innerText = "Du valgte fargen: blå";
-    }
-
     // Funksjon for å oppdatere siden når knappen trykkes
     function refreshPage() {
-        location.reload();
+        // Lagre radio-knappens tilstand i localStorage når knappen trykkes
+        if (radio.checked) {
+            localStorage.setItem("fargevalg", "blaa");
+        }
+        location.reload(); // oppdater siden
+    }
+
+    // Hvis besøk er større enn 1, og radio-knappen er valgt, sett bakgrunnsfargen til blå
+    if (besok > 1) {
+        // Hent fargevalget fra localStorage
+        let valgtFarge = localStorage.getItem("fargevalg");
+
+        if (valgtFarge === "blaa") {
+            document.body.style.backgroundColor = 'blue';
+            radio.checked = true; // Merk radio-knappen som valgt
+            meldingEl.innerText = "Du valgte fargen: blå";
+        }
     }
 
     // Reset besøksteller og last siden på nytt
     resetButton.addEventListener("click", function() {
         localStorage.removeItem("antallBesok");
-        location.reload();
+        
     });
 
 </script>
