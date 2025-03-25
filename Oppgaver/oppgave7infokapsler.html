@@ -1,0 +1,54 @@
+<input type="text" id="input1">
+<button>Trykk her</button>
+<ul></ul>
+<input type="checkbox" id="input2">
+
+
+
+
+
+<script>
+    let listeEl = document.querySelector("ul");
+    let inputEl = document.querySelector("input");
+    let knappEl = document.querySelector("button");
+    let input2El=document.querySelector("#input2")
+
+    knappEl.addEventListener("click", leggTilGjøreTing);
+
+    let gjøreTing = [];
+    lagliste();
+
+    function lagliste() {
+        if (localStorage.GjøreTingListe) {
+            let tekst = localStorage.FilmListe;
+            filmer = tekst.split(":");
+        }
+
+        listeEl.innerHTML = ""+input2El;
+
+        for (let i = 0; i < filmer.length; i++) {
+            let liEl = document.createElement("li");
+            liEl.innerHTML = filmer[i];
+
+            listeEl.appendChild(liEl);
+        }
+    }
+
+    function leggTilFilm() {
+        let nyFilm = inputEl.value;
+        filmer.push(nyFilm);
+
+        let tekst = "";
+        for (let i = 0; i < filmer.length; i++) {
+            if (i == 0) {
+                tekst += filmer[i];
+            } else {
+                tekst += ":" + filmer[i];
+            }
+        }
+
+        localStorage.FilmListe = tekst;
+        lagliste(); // Oppdaterer listen visuelt
+        inputEl.value = ""; // Tømmer input-feltet etter å ha lagt til en film
+    }
+</script>
