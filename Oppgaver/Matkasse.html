@@ -29,6 +29,8 @@
 
     let tbody = document.querySelector("tbody");
 
+    let td = document.querySelector("td");
+
     for (let i = 0; i<array1.length; i++){
         let tr = document.createElement("tr");
 
@@ -38,20 +40,21 @@
         tr.appendChild(td1);
 
 
-    let td2 = document.createElement("td");
-    td2.innerHTML = array2[i];
-    tr.appendChild(td2);
+        let td2 = document.createElement("td");
+        td2.innerHTML = array2[i];
+        tr.appendChild(td2);
 
-    let td3 = document.createElement("td");
-    td3.innerHTML = array3[i];
-    tr.appendChild(td3);
+        let td3 = document.createElement("td");
+        td3.innerHTML = array3[i];
+        tr.appendChild(td3);
 
 
-    tbody.appendChild(tr);
+        tbody.appendChild(tr);
     }
 
-
-
-
+    
+  td.addEventListener("click", function(){
+    alert("Du har valgt " + td.innerHTML);
+  });
 
     </script>
