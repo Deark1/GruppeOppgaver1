@@ -27,7 +27,10 @@
     let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)"]
     let array2 = [679, 679, 879, 879, 779]
     let array3 = [979, 979, 1179, 1179, 1079]
+
+
     let tbody = document.querySelector("tbody");
+    let td= document.querySelector("td");
     for (let i = 0; i < 6; i++) {
         let tr = document.createElement("tr");
         tbody.appendChild(tr);
@@ -37,8 +40,8 @@
 
              
             }
-            for (let j = 0; j < 5; j++){
-                tr.textContent = array1[j];
+            for (let j = 0; j <= 5; j++){
+                td.innerHTML= array1[j];
                 tr.appendChild(td);
             }
 
