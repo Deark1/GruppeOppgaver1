@@ -1,0 +1,13 @@
+<label for="MobilNummer">Mobilnummer</label>
+<input type="number" id="MobilNummer">
+<button id="lagre">Konfirmer Nummer</button>
+<script>
+    const inputEl = document.getElementById("MobilNummer");
+    // Hent lagret nummer ved oppstart
+    inputEl.value = localStorage.getItem("MobilNummer") || "";
+    document.getElementById("lagre").addEventListener("click", function() {
+        localStorage.setItem("MobilNummer", inputEl.value.trim());
+    });
+
+</script>
+

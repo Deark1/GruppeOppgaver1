@@ -1,0 +1,20 @@
+<label for="Navn">Fornavn</label>
+<input type="text" id="Navn">
+<label for="Etternavn">Etternavn</label>
+<input type="text" id="EtterNavn">
+<button id="lagre">Konfirmer navn</button>
+<script>
+    const inputEl = document.getElementById("Navn");
+    const inputEl2 = document.getElementById("EtterNavn");
+
+
+    // Hent lagret navn ved oppstart
+    inputEl.value = localStorage.getItem("Navn") || "";
+    inputEl2.value = localStorage.getItem("EtterNavn") || "";
+
+    document.getElementById("lagre").addEventListener("click", function() {
+        localStorage.setItem("Navn", inputEl.value.trim());
+        localStorage.setItem("EtterNavn", inputEl2.value.trim());
+    });
+</script>
+
