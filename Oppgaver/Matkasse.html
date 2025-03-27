@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Matkasse</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='main.js'></script>
+</head>
+<body>
+    <table border="1">
+        <tbody>
+                <tr>
+                    <th>Matkasse</td>
+                    <th>Pris 1-2 personer</td>
+                    <th>Pris 3-4 personer</td>
+                </tr>
+        </tbody>
+    </table>
+</body>
+</html>
+
+<script>
+    let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)"]
+    let array2 = [679, 679, 879, 879, 779]
+    let array3 = [979, 979, 1179, 1179, 1079]
+
+
+    let tbody = document.querySelector("tbody");
+
+    for (let i = 0; i<array1.length; i++){
+        let tr = document.createElement("tr");
+
+
+        let td1 = document.createElement("td");
+        td1.innerHTML = array1[i];
+        tr.appendChild(td1);
+
+
+    let td2 = document.createElement("td");
+    td2.innerHTML = array2[i];
+    tr.appendChild(td2);
+
+    let td3 = document.createElement("td");
+    td3.innerHTML = array3[i];
+    tr.appendChild(td3);
+
+
+    tbody.appendChild(tr);
+    }
+
+
+
+
+
+    </script>
