@@ -1,0 +1,35 @@
+<label for="GateNavn">Gatenavn</label>
+<input type="text" id="GateNavn">
+<label for="GateNummer">gatenummer</label>
+<input type="number" id="GateNummer">
+<label for="Sted">Sted</label>
+<input type="text" id="Sted">
+<label for="PostNummer">Postnummer</label>
+<input type="number" id="PostNummer">
+<button id="lagre">Konfirmer Adresse</button>
+<script>
+    const inputEl = document.getElementById("GateNavn");
+    const inputEl2 = document.getElementById("GateNummer");
+    const inputEl3 = document.getElementById("Sted");
+    const inputEl4 = document.getElementById("PostNummer");
+
+
+
+    // Hent lagret navn ved oppstart
+    inputEl.value = localStorage.getItem("GateNavn") || "";
+    inputEl2.value = localStorage.getItem("GateNummer") || "";
+    inputEl3.value = localStorage.getItem("Sted") || "";
+    inputEl4.value = localStorage.getItem("PostNummer") || "";
+
+
+
+    document.getElementById("lagre").addEventListener("click", function() {
+        localStorage.setItem("GateNavn", inputEl.value.trim());
+        localStorage.setItem("GateNummer", inputEl2.value.trim());
+        localStorage.setItem("Sted", inputEl3.value.trim());
+        localStorage.setItem("PostNummer", inputEl3.value.trim());
+
+
+    });
+</script>
+
