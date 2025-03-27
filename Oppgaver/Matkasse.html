@@ -11,26 +11,36 @@
 <body>
     <table>
         <tbody>
-            <tr>
-                <td>hei</td>
-                <td>...</td>
-                <td>...</td>
-            </tr>
-            <tr>
-
-            </tr>
+            <th>
+                <tr>
+                    <td>Matkasse</td>
+                    <td>Pris 1-2 personer</td>
+                    <td>Pris 3-4 personer</td>
+                </tr>
+            </th>
         </tbody>
     </table>
 </body>
 </html>
 
 <script>
-    for (i=0; i<6; i++) {
-        document.createElement("tr");
-        document.appendChild("tr");
-        for (j=0; j<3; j++) {
-            document.createElement("td");
-            document.appendChild("td");
+    let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)"]
+    let array2 = [679, 679, 879, 879, 779]
+    let array3 = [979, 979, 1179, 1179, 1079]
+    let tbody = document.querySelector("tbody");
+    for (let i = 0; i < 6; i++) {
+        let tr = document.createElement("tr");
+        tbody.appendChild(tr);
+        for (let k = 0; k < 3; k++) {
+            let td = document.createElement("td");
+            
+
+             
+            }
+            for (let j = 0; j < 5; j++){
+                tr.textContent = array1[j];
+                tr.appendChild(td);
+            }
+
         }
-    }
-</script>
+    </script>
