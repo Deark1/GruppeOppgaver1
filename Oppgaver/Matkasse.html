@@ -55,3 +55,57 @@
 
 
     </script>
+    <html>
+<label for="Navn">Fornavn</label>
+<input type="text" id="Navn">
+<label for="Etternavn">Etternavn</label>
+<input type="text" id="EtterNavn">
+<label for="GateNavn">Gatenavn</label>
+<input type="text" id="GateNavn">
+<label for="GateNummer">gatenummer</label>
+<input type="number" id="GateNummer">
+<label for="Sted">Sted</label>
+<input type="text" id="Sted">
+<label for="PostNummer">Postnummer</label>
+<input type="number" id="PostNummer">
+<label for="MobilNummer">Mobilnummer</label>
+<input type="number" id="MobilNummer">
+<button id="lagre">Konfirmer Informasjon</button>
+</html>
+<script>
+    const inputEl = document.getElementById("Navn");
+    const inputEl2 = document.getElementById("EtterNavn");
+    const inputEl3 = document.getElementById("GateNavn");
+    const inputEl4 = document.getElementById("GateNummer");
+    const inputEl5 = document.getElementById("Sted");
+    const inputEl6 = document.getElementById("PostNummer");
+    const inputEl7 = document.getElementById("MobilNummer");
+
+
+    // Hent lagret info ved oppstart
+    inputEl.value = localStorage.getItem("Navn") || "";
+    inputEl2.value = localStorage.getItem("EtterNavn") || "";
+    inputEl3.value = localStorage.getItem("GateNavn") || "";
+    inputEl4.value = localStorage.getItem("GateNummer") || "";
+    inputEl5.value = localStorage.getItem("Sted") || "";
+    inputEl6.value = localStorage.getItem("PostNummer") || "";
+    inputEl7.value = localStorage.getItem("MobilNummer") || "";
+
+
+    document.getElementById("lagre").addEventListener("click", function() {
+        localStorage.setItem("Navn", inputEl.value.trim());
+        localStorage.setItem("EtterNavn", inputEl2.value.trim());
+        localStorage.setItem("GateNavn", inputEl3.value.trim());
+        localStorage.setItem("GateNummer", inputEl4.value.trim());
+        localStorage.setItem("Sted", inputEl5.value.trim());
+        localStorage.setItem("PostNummer", inputEl6.value.trim());
+        localStorage.setItem("MobilNummer", inputEl7.value.trim());
+        
+
+    });
+
+</script>
+
+
+
+
