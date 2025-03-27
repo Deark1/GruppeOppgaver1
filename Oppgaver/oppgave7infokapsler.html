@@ -1,7 +1,6 @@
-<input type="text" id="input1">
+<input type="text">
 <button>Trykk her</button>
 <ul></ul>
-<input type="checkbox" id="input2">
 
 
 
@@ -11,43 +10,42 @@
     let listeEl = document.querySelector("ul");
     let inputEl = document.querySelector("input");
     let knappEl = document.querySelector("button");
-    let input2El=document.querySelector("#input2")
 
     knappEl.addEventListener("click", leggTilGjøreTing);
 
-    let gjøreTing = [];
+    let GjøreTing = [];
     lagliste();
 
     function lagliste() {
         if (localStorage.GjøreTingListe) {
-            let tekst = localStorage.FilmListe;
-            filmer = tekst.split(":");
+            let tekst = localStorage.GjøreTingListe;
+            GjøreTing = tekst.split(":");
         }
 
-        listeEl.innerHTML = ""+input2El;
+        listeEl.innerHTML = "";
 
-        for (let i = 0; i < filmer.length; i++) {
+        for (let i = 0; i < GjøreTing.length; i++) {
             let liEl = document.createElement("li");
-            liEl.innerHTML = filmer[i];
+            liEl.innerHTML = GjøreTing[i];
 
             listeEl.appendChild(liEl);
         }
     }
 
-    function leggTilFilm() {
-        let nyFilm = inputEl.value;
-        filmer.push(nyFilm);
+    function leggTilGjøreTing() {
+        let nyGjøreting = inputEl.value;
+        GjøreTing.push(nyGjøreting);
 
         let tekst = "";
-        for (let i = 0; i < filmer.length; i++) {
+        for (let i = 0; i < GjøreTing.length; i++) {
             if (i == 0) {
-                tekst += filmer[i];
+                tekst += GjøreTing[i];
             } else {
-                tekst += ":" + filmer[i];
+                tekst += ":" + GjøreTing[i];
             }
         }
 
-        localStorage.FilmListe = tekst;
+        localStorage.GjøreTingListe = tekst;
         lagliste(); // Oppdaterer listen visuelt
         inputEl.value = ""; // Tømmer input-feltet etter å ha lagt til en film
     }
