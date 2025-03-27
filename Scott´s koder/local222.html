@@ -1,0 +1,38 @@
+<input type="color" id="fargeVelger">
+<button id="lagre">Lagre farge</button>
+
+
+<button id="refresh" onclick="location.reload()">apply color</button>
+<button id="reset">Reset farge</button>
+<a href="mottaker.html">link</a>
+
+<script>
+    const fargeVelger = document.getElementById("fargeVelger");
+    const lagreKnapp = document.getElementById("lagre");
+
+    // Hvis det finnes en lagret farge, bruk den (men IKKE endre bakgrunn før nytt besøk)
+    if (localStorage.getItem("farge")) {
+        document.body.style.backgroundColor = localStorage.getItem("farge");
+    }
+    let tekst="test"
+    localStorage.setItem("tekst",tekst)
+    lagreKnapp.addEventListener("click", function () {
+        let valgtFarge = fargeVelger.value;
+        localStorage.setItem("farge", valgtFarge); // Lagre fargen, men ikke endre bakgrunnen
+        //alert("Fargen er lagret! Den vil bli brukt neste gang du åpner siden.");
+    });
+
+    let besok=Number(localStorage.getItem('antallBesok'))+1;
+    localStorage.setItem('antallBesok',besok)
+
+    let resetButton=document.querySelector("#reset")
+
+    resetButton.addEventListener("click", function(){
+        fargeVelger.value= "#ffffff";
+        document.body.style.backgroundColor = "#ffffff";
+        localStorage.setItem("farge", "#ffffff")
+    })
+</script>
+
+</body>
+</html>
