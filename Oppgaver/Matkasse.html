@@ -5,8 +5,6 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Matkasse</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
 </head>
 <body>
     <table border="1">
@@ -19,6 +17,7 @@
         </tbody>
     </table>
 </body>
+<button> klikk </button>
 </html>
 
 <script>
@@ -28,8 +27,9 @@
 
 
     let tbody = document.querySelector("tbody");
+    let knappEl=document.querySelector("button");
 
-    let td = document.querySelector("td");
+    
 
     for (let i = 0; i<array1.length; i++){
         let tr = document.createElement("tr");
@@ -51,13 +51,15 @@
 
         tbody.appendChild(tr);
     }
+    let td = document.querySelector("td");
 
+    td.addEventListener("click", clickfunction)
     
-  td.addEventListener("click", function(){
-    alert("Du har valgt " + td.innerHTML);
-  });
-
+    function clickfunction(){
+        console.log("Hei");
+    }
     </script>
+    
     <html>
 <label for="Navn">Fornavn</label>
 <input type="text" id="Navn">
