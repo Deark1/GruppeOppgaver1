@@ -9,7 +9,7 @@
     <script src='main.js'></script>
 </head>
 <body>
-    <table>
+    <table border="1">
         <tbody>
                 <tr>
                     <th>Matkasse</td>
@@ -28,20 +28,30 @@
 
 
     let tbody = document.querySelector("tbody");
-    let td= document.querySelector("td");
-    for (let i = 0; i < 6; i++) {
+
+    for (let i = 0; i<array1.length; i++){
         let tr = document.createElement("tr");
-        tbody.appendChild(tr);
-        for (let k = 0; k < 3; k++) {
-            let td = document.createElement("td");
-            
 
-             
-            }
-            for (let j = 0; j <= 5; j++){
-                td.innerHTML= array1[j];
-                tr.appendChild(td);
-            }
 
-        }
+        let td1 = document.createElement("td");
+        td1.innerHTML = array1[i];
+        tr.appendChild(td1);
+
+
+    let td2 = document.createElement("td");
+    td2.innerHTML = array2[i];
+    tr.appendChild(td2);
+
+    let td3 = document.createElement("td");
+    td3.innerHTML = array3[i];
+    tr.appendChild(td3);
+
+
+    tbody.appendChild(tr);
+    }
+
+
+
+
+
     </script>
