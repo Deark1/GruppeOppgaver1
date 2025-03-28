@@ -30,6 +30,7 @@
     let knappEl=document.querySelector("button");
 
     
+    let td = document.querySelector("td");
 
     for (let i = 0; i<array1.length; i++){
         let tr = document.createElement("tr");
@@ -58,6 +59,10 @@
     function clickfunction(){
         console.log("Hei");
     }
+  td.addEventListener("click", function(){
+    alert("Du har valgt " + td.innerHTML);
+  });
+
     </script>
     
     <html>
