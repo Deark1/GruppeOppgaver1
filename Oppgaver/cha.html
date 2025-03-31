@@ -10,68 +10,120 @@
 </head>
 <body>
     <table border="1">
+        <thead>
+            <tr>
+                <th>Matkasse</th>
+                <th>Pris 1-2 personer</th>
+                <th>Pris 3-4 personer</th>
+                <th>Antall</th>
+                <th>Total Pris</th>
+            </tr>
+        </thead>
         <tbody>
-                <tr>
-                    <th>Matkasse</td>
-                    <th>Pris 1-2 personer</td>
-                    <th>Pris 3-4 personer</td>
-                </tr>
         </tbody>
     </table>
 </body>
 </html>
 
 <script>
-  let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevennlig)"];
-let array2 = [679, 679, 879, 879, 779];
-let array3 = [979, 979, 1179, 1179, 1079];
+    let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)","TotalPris"];
+    let array2 = [679, 679, 879, 879, 779]; // Pris for 1-2 personer
+    let array3 = [979, 979, 1179, 1179, 1079]; // Pris for 3-4 personer
 
-let tbody = document.querySelector("tbody");
+    let tbody = document.querySelector("tbody");
 
-for (let i = 0; i < array1.length; i++) {
-    let tr = document.createElement("tr");
+    for (let i = 0; i < array1.length; i++) {
+        let tr = document.createElement("tr");
 
-    let td1 = document.createElement("td");
-    td1.innerHTML = array1[i];
-    tr.appendChild(td1);
+        // Matkasse
+        let td1 = document.createElement("td");
+        td1.innerHTML = array1[i];
+        tr.appendChild(td1);
 
-    let td2 = document.createElement("td");
-    td2.innerHTML = array2[i];
-    tr.appendChild(td2);
+        // Pris 1-2 personer
+        let td2 = document.createElement("td");
+        td2.innerHTML = array2[i];
+        tr.appendChild(td2);
 
-    let td3 = document.createElement("td");
-    td3.innerHTML = array3[i];
-    tr.appendChild(td3);
+        // Pris 3-4 personer
+        let td3 = document.createElement("td");
+        td3.innerHTML = array3[i];
+        tr.appendChild(td3);
 
-    // Create a new <td> for the button
-    let vare1=0
-    let pluss = document.createElement("button");
-    let minus = document.createElement("button");
-    pluss.textContent = "+"; // Button text
-    pluss.onclick = function () {
-        vare1=vare1+1
+        // Antall
+        let td4 = document.createElement("td");
+        let countSpan = document.createElement("span");
+        countSpan.innerHTML = "0";
+        td4.appendChild(countSpan);
+        tr.appendChild(td4);
+
+        // Total Pris
+        let td5 = document.createElement("td");
+        let totalSpan = document.createElement("span");
+        totalSpan.innerHTML = "0";
+        td5.appendChild(totalSpan);
+        tr.appendChild(td5);
+
+        // + and - buttons for Pris 1-2 personer
+        let minusKnapp1 = document.createElement("button");
+        minusKnapp1.classList.add("small-btn");
+        minusKnapp1.textContent = "-";
+        let plussKnapp1 = document.createElement("button");
+        plussKnapp1.classList.add("small-btn");
+        plussKnapp1.textContent = "+";
+
+        // + and - buttons for Pris 3-4 personer
+        let minusKnapp2 = document.createElement("button");
+        minusKnapp2.classList.add("small-btn");
+        minusKnapp2.textContent = "-";
+        let plussKnapp2 = document.createElement("button");
+        plussKnapp2.classList.add("small-btn");
+        plussKnapp2.textContent = "+";
+
+        let pricePerUnit = 0;
+        
+        // Logic for adjusting count and price
+        plussKnapp1.onclick = function () {
+            let value = parseInt(countSpan.innerHTML);
+            countSpan.innerHTML = value + 1;
+            pricePerUnit = array2[i];
+            totalSpan.innerHTML = (value + 1) * pricePerUnit;
         };
-    minus.textContent = "-"; // Button text
-    minus.onclick = function () {
-        vare1=vare1-1
+
+        minusKnapp1.onclick = function () {
+            let value = parseInt(countSpan.innerHTML);
+            if (value > 0) {
+                countSpan.innerHTML = value - 1;
+                totalSpan.innerHTML = (value - 1) * pricePerUnit;
+            }
         };
-    
-    td3.appendChild(pluss);
-    td3.appendChild(minus);
 
-    tr.appendChild(td3);
+        plussKnapp2.onclick = function () {
+            let value = parseInt(countSpan.innerHTML);
+            countSpan.innerHTML = value + 1;
+            pricePerUnit = array3[i];
+            totalSpan.innerHTML = (value + 1) * pricePerUnit;
+        };
 
-    tbody.appendChild(tr);
-}
+        minusKnapp2.onclick = function () {
+            let value = parseInt(countSpan.innerHTML);
+            if (value > 0) {
+                countSpan.innerHTML = value - 1;
+                totalSpan.innerHTML = (value - 1) * pricePerUnit;
+            }
+        };
 
-console.log(vare1)
-    
+        // Add buttons to the table
+        td2.appendChild(minusKnapp1);
+        td2.appendChild(plussKnapp1);
+        td3.appendChild(minusKnapp2);
+        td3.appendChild(plussKnapp2);
 
+        tbody.appendChild(tr);
+    }
 
-
-
-    </script>
-    <html>
+</script>
+<html>
         <div id="InfoKapsler">
 <label for="Navn">Fornavn</label>
 <input type="text" id="Navn">
@@ -87,6 +139,8 @@ console.log(vare1)
 <input type="number" id="PostNummer">
 <label for="MobilNummer">Mobilnummer</label>
 <input type="number" id="MobilNummer">
+<Label></Label>
+<input type="text" name="" id="">
 <button id="lagre">Konfirmer Informasjon</button>
 </div>
 </html>
@@ -141,3 +195,29 @@ td{
 }
 </style>
 
+
+
+
+<style>
+    #InfoKapsler {
+        margin-top: 20px;
+        display: block;
+        font-weight: bold;
+    }
+    label {
+        display: block;
+    }
+    button {
+        margin-top: 10px;
+        display: inline-block;
+    }
+    td {
+        font-weight: bold;
+        padding: 5px;
+    }
+    .small-btn {
+        font-size: 14px;
+        padding: 5px;
+        margin: 2px;
+    }
+</style>

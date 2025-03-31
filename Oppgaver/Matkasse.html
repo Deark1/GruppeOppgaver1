@@ -12,9 +12,9 @@
     <table border="1">
         <tbody>
                 <tr>
-                    <th>Matkasse</td>
-                    <th>Pris 1-2 personer</td>
-                    <th>Pris 3-4 personer</td>
+                    <th>Matkasse</th>
+                    <th>Pris 1-2 personer</th>
+                    <th>Pris 3-4 personer</th>
                 </tr>
         </tbody>
     </table>
@@ -52,6 +52,10 @@
     
     let minusKnapp = document.createElement("button");
     minusKnapp.classList.add("small-btn");
+    minusKnapp.textContent = "-";
+    let PlussKnapp = document.createElement("button");
+    PlussKnapp.classList.add("small-btn");
+    PlussKnapp.textContent = "+";
 
 
     minusKnapp.onclick = function () {
@@ -60,8 +64,17 @@
         };
     td2.appendChild(minusKnapp);
     td3.appendChild(minusKnapp);
-    tr.appendChild(td3);
+    
 
+    tbody.appendChild(tr);
+    PlussKnapp.onclick = function () {
+            let value = parseInt(countSpan.textContent);
+            if (value > 0) countSpan.textContent = value + 1;
+        };
+    td2.appendChild(PlussKnapp);
+    td3.appendChild(PlussKnapp);
+    tr.appendChild(td3);
+    tr.appendChild(td2);
     tbody.appendChild(tr);
     }
 
