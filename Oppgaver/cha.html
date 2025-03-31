@@ -22,48 +22,50 @@
 </html>
 
 <script>
-    let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)"]
-    let array2 = [679, 679, 879, 879, 779]
-    let array3 = [979, 979, 1179, 1179, 1079]
+  let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevennlig)"];
+let array2 = [679, 679, 879, 879, 779];
+let array3 = [979, 979, 1179, 1179, 1079];
 
+let tbody = document.querySelector("tbody");
 
-    let tbody = document.querySelector("tbody");
+for (let i = 0; i < array1.length; i++) {
+    let tr = document.createElement("tr");
 
-    for (let i = 0; i<array1.length; i++){
-        let tr = document.createElement("tr");
-
-
-        let td1 = document.createElement("td");
-        td1.innerHTML = array1[i];
-        tr.appendChild(td1);
-
+    let td1 = document.createElement("td");
+    td1.innerHTML = array1[i];
+    tr.appendChild(td1);
 
     let td2 = document.createElement("td");
     td2.innerHTML = array2[i];
     tr.appendChild(td2);
 
     let td3 = document.createElement("td");
-    
     td3.innerHTML = array3[i];
     tr.appendChild(td3);
 
-
-    tbody.appendChild(tr);
-    
-    let minusKnapp = document.createElement("button");
-    minusKnapp.classList.add("small-btn");
-
-
-    minusKnapp.onclick = function () {
-            let value = parseInt(countSpan.textContent);
-            if (value > 0) countSpan.textContent = value - 1;
+    // Create a new <td> for the button
+    let vare1=0
+    let pluss = document.createElement("button");
+    let minus = document.createElement("button");
+    pluss.textContent = "+"; // Button text
+    pluss.onclick = function () {
+        vare1=vare1+1
         };
-    td2.appendChild(minusKnapp);
-    td3.appendChild(minusKnapp);
+    minus.textContent = "-"; // Button text
+    minus.onclick = function () {
+        vare1=vare1-1
+        };
+    
+    td3.appendChild(pluss);
+    td3.appendChild(minus);
+
     tr.appendChild(td3);
 
     tbody.appendChild(tr);
-    }
+}
+
+console.log(vare1)
+    
 
 
 
@@ -138,5 +140,4 @@ td{
     font-weight: bold;
 }
 </style>
-
 
