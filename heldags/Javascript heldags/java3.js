@@ -1,6 +1,5 @@
-
 let startSaldo = 100000;
-  
+
 function saldo(total, beløp) {
   let nySaldo = total - beløp;
   return nySaldo;
@@ -35,8 +34,9 @@ function leggTilRad() {
   beløpInput.type = "number";
   beløpInput.placeholder = "Beløp I NOK";
   beløpInput.addEventListener("input", () => {
-    const ny = saldo(forrigeSaldo, parseFloat(beløpInput.value || 0));
-    saldoInput.value = ny;
+    const beløpVerdi = parseFloat(beløpInput.value || 0);
+    const nySaldo = saldo(forrigeSaldo, beløpVerdi);
+    saldoInput.value = nySaldo;
   });
   beløpCell.appendChild(beløpInput);
 
@@ -53,15 +53,32 @@ function leggTilRad() {
   mottakerInput.placeholder = "Mottaker Email";
   mottakerCell.appendChild(mottakerInput);
 
+  // 5: KontoNummer 
+  const KontoNummerCell = newRow.insertCell();
+  const KontoNummerInput = document.createElement("input");
 
-// 5: KontoNummer 
-const KontoNummerCell=newRow.insertCell();
-const KontoNummerInput=document.createElement("input");
-KontoNummerInput.type="number";
-KontoNummerInput.placeholder="1234 567 8910"
-KontoNummerCell.appendChild(KontoNummerInput)
+  KontoNummerInput.type = "tel";
+  KontoNummerInput.placeholder = "12345678910";
+  KontoNummerInput.maxLength = 11;
+  KontoNummerInput.inputMode = "numeric";
+  KontoNummerInput.autocomplete = "off";
+
+  // Hindrer tastetrykk av spesialtegn som e, +, - osv.
+  KontoNummerInput.addEventListener("keydown", (e) => {
+    if (["e", "E", "+", "-", "."].includes(e.key)) {
+      e.preventDefault();
+    }
+  });
+
+  // Fjerner ikke-tall under input
+  KontoNummerInput.addEventListener("input", (e) => {
+    e.target.value = e.target.value.replace(/\D/g, ""); // Kun tall
+  });
+
+  KontoNummerCell.appendChild(KontoNummerInput);
 }
-// Legg til første rad automatisk
-leggTilRad();
 
-
+// Legg til første rad automatisk når siden lastes
+document.addEventListener("DOMContentLoaded", () => {
+  leggTilRad();
+});
