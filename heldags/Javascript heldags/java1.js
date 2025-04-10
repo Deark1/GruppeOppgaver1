@@ -1,4 +1,4 @@
-innloging = {brukernavn: "Furryblast", passord: "12345678"};
+innloging = {brukernavn: "Ola Normann", passord: "123456"};
 
 function loggInn() {
     let brukernavn = document.querySelector("#brukernavn").value;
