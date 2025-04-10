@@ -6,7 +6,7 @@ function loggInn() {
 
     if (brukernavn === innloging.brukernavn && passord === innloging.passord) {
         alert("Du er logget inn!");
-        window.location.href = "sendside2.html";
+        window.location.href = "sendside3.html";
     } else {
         alert("Feil brukernavn eller passord.");
     }
