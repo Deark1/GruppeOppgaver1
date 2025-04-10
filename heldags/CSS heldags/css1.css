@@ -1,16 +1,19 @@
 #background{
     background-color: lightgray;}
 
-.input{
-    display: block;
-    align-items: center;
-    text-align: center;
-}
+
 .html{
+    
     font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 #login{
+    align-items: center;
+    text-align: center;
     justify-content: center;
-    
-    
+    margin: 20vh;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 35px;
+    padding-top: 20px;
+    background-color: darkgray;
 }
