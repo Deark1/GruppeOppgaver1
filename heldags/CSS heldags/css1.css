@@ -30,7 +30,7 @@
       font-family: sans-serif;
       padding: 20px;
     }
-    #table3 {
+    #dataTable {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 10px;
@@ -49,9 +49,7 @@
       padding: 4px;
       box-sizing: border-box;
     }
-    input[readonly] {
-      background-color: #eee;
-    }
+    
     button {
       padding: 8px 12px;
       background-color: #0077cc;
