@@ -1,14 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="no">
 <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Fremtidige Betalinger</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-    <script src='main.js'></script>
+  <meta charset="UTF-8">
+  <title>Fremtidige Betalinger</title>
 </head>
 <body>
-    
+<h2>Fremtidige Betalinger</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Saldo</th>
+      <th>Beløp</th>
+      <th>Dato</th>
+      <th>Mottaker</th>
+      <th>Kontonummer</th>
+    </tr>
+  </thead>
+  <tbody id="futureRows"></tbody>
+</table>
+
+<script>
+  const lagret = JSON.parse(localStorage.getItem("betalinger")) || [];
+  const tbody = document.getElementById("futureRows");
+  const iDag = new Date();
+
+  lagret.forEach(b => {
+    const dato = new Date(b.dato);
+    if (dato > iDag) {
+      const rad = document.createElement("tr");
+      rad.innerHTML = `
+        <td>${b.saldo}</td>
+        <td>${b.beløp}</td>
+        <td>${b.dato}</td>
+        <td>${b.mottaker}</td>
+        <td>${b.kontonummer}</td>
+      `;
+      tbody.appendChild(rad);
+    }
+  });
+</script>
 </body>
 </html>

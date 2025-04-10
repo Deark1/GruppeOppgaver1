@@ -3,23 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <title>Tidligere Betalinger</title>
-  <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
-  <script src="./Javascript heldags/java2.js" defer></script>
 </head>
 <body>
-  <h2>Tidligere Betalinger</h2>
-  <table id="dataTable">
-    <thead>
-      <tr>
-        <th>Saldo</th>
-        <th>Beløp</th>
-        <th>Dato</th>
-        <th>Mottaker</th>
-        <th>Kontonummer</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+<h2>Tidligere Betalinger</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Saldo</th>
+      <th>Beløp</th>
+      <th>Dato</th>
+      <th>Mottaker</th>
+      <th>Kontonummer</th>
+    </tr>
+  </thead>
+  <tbody id="pastRows"></tbody>
+</table>
+
+<script>
+  const betalinger = JSON.parse(localStorage.getItem("betalinger")) || [];
+  const tbody = document.getElementById("pastRows");
+  const iDag = new Date();
+  iDag.setHours(0, 0, 0, 0); // Fjern tid – sammenlign kun dato
+
+  betalinger.forEach(b => {
+    const dato = new Date(b.dato);
+    dato.setHours(0, 0, 0, 0); // Samme her
+
+    if (dato <= iDag) {
+      const rad = document.createElement("tr");
+      rad.innerHTML = `
+        <td>${b.saldo}</td>
+        <td>${b.beløp}</td>
+        <td>${b.dato}</td>
+        <td>${b.mottaker}</td>
+        <td>${b.kontonummer}</td>
+      `;
+      tbody.appendChild(rad);
+    }
+  });
+</script>
+
 </body>
 </html>
