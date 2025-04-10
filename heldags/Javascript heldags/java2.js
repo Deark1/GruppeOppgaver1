@@ -9,11 +9,11 @@ function leggTilRad() {
   const lastRow = table.rows[table.rows.length - 1];
   let forrigeSaldo = startSaldo;
 
-  // Hent forrige saldo hvis eksisterer
+  // Hent forrige saldo
   if (lastRow) {
-    const prevSaldoInput = lastRow.cells[0].querySelector("input");
-    if (prevSaldoInput && !isNaN(parseFloat(prevSaldoInput.value))) {
-      forrigeSaldo = parseFloat(prevSaldoInput.value);
+    const forrigeSaldoInput = lastRow.cells[0].querySelector("input");
+    if (forrigeSaldoInput && !isNaN(parseFloat(forrigeSaldoInput.value))) {
+      forrigeSaldo = parseFloat(forrigeSaldoInput.value);
     }
   }
 
