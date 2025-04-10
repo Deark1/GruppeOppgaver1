@@ -17,3 +17,14 @@ document.addEventListener("DOMContentLoaded", () => {
     buttonEl.addEventListener("click", loggInn);
 });
 
+function send (){
+    const kontonummer = document.querySelectorAll("#kontonummer").value;
+
+    if (kontonummer.length == 11) {
+        alert("Du har sendt penger til kontonummer: " + kontonummer);
+    }
+    else {
+        alert("Feil kontonummer");
+    }
+
+}
