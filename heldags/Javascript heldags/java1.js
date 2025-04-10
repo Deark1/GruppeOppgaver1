@@ -1,21 +1,18 @@
-innloging = {brukernavn: "o", passord: "1"};
+const innloging = { brukernavn: "o", passord: "1" };
 
-
-document.addEventListener("DOMContentLoaded", () => {
-    const buttonEl = document.querySelector("#logginnbutton");
-    buttonEl.addEventListener("click", loggInn);
-    })
-    
 function loggInn() {
     const brukernavn = document.querySelector("#brukernavn").value;
     const passord = document.querySelector("#password").value;
-    let buttonEl= document.querySelector("#logginnbutton");
+
     if (brukernavn === innloging.brukernavn && passord === innloging.passord) {
-        alert("Du er logget inn!")
+        alert("Du er logget inn!");
         window.location.href = "sendside1.html";
-    }
-    else {
+    } else {
         alert("Feil brukernavn eller passord.");
     }
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonEl = document.querySelector("#loginnbutton");
+    buttonEl.addEventListener("click", loggInn);
+});
