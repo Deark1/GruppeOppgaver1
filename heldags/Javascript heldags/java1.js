@@ -1,4 +1,4 @@
-innloging = {brukernavn: "Ola Normann", passord: "123456"};
+innloging = {brukernavn: "o", passord: "1"};
 
 
 document.addEventListener("DOMContentLoaded", () => {
