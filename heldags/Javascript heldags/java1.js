@@ -1,15 +1,23 @@
-const innloging = { brukernavn: "Furryblast", passord: "banan" };
+const innloging = { kontonummer: "10712345678", passord: "banan" };
 
 function loggInn() {
-    const brukernavn = document.querySelector("#brukernavn").value;
+    const kontonummer = document.querySelector("#kontonummer").value.trim()
     const passord = document.querySelector("#password").value;
 
-    if (brukernavn === innloging.brukernavn && passord === innloging.passord) {
+    const erGyldig = /^[0-9]{6,11}$/.test(kontonummer);
+
+    if (!erGyldig) {
+        alert("Kontonummer må være mellom 6 og 11 siffer, kun tall.");
+        return;
+    }
+
+    if (kontonummer === innloging.kontonummer && passord === innloging.passord) {
         alert("Du er logget inn!");
         window.location.href = "sendside3.html";
     } else {
-        alert("Feil brukernavn eller passord.");
+        alert("Feil kontonummer eller passord.");
     }
+
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -17,17 +25,17 @@ document.addEventListener("DOMContentLoaded", () => {
     buttonEl.addEventListener("click", loggInn);
 });
 
-function send (){
-    const kontonummer = document.querySelectorAll("#kontonummer").value;
+document.addEventListener("DOMContentLoaded", () => {
+    const buttonEl = document.querySelector("#loginnbutton");
 
-    if (kontonummer.length == 11) {
-        alert("Du har sendt penger til kontonummer: " + kontonummer);
-    }
-    else {
-        alert("Feil kontonummer");
-    }
+    document.querySelector("#kontonummer").addEventListener("keydown", (e) => {
+        if (["e", "E", "+", "-", "."].includes(e.key)) {
+            e.preventDefault();
+        }
+    });
 
-}
+    buttonEl.addEventListener("click", loggInn);
+});
 
 localStorage.setItem("brukernavn", "Furryblast");
 localStorage.setItem("passord", "Banan");
