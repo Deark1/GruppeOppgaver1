@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 #background{
     background-color: lightgray;
 
+=======
+.input{
+    display: block;
+    align-items: center;
+    text-align: center;
+>>>>>>> d643f70b3caf558f3197199b22c6744dd83b7c43
 }
