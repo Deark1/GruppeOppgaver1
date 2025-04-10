@@ -26,11 +26,11 @@
 
 }
 
-    body {
+    #body3 {
       font-family: sans-serif;
       padding: 20px;
     }
-    table {
+    #table3 {
       width: 100%;
       border-collapse: collapse;
       margin-bottom: 10px;
