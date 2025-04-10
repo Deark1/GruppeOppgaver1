@@ -1,0 +1,16 @@
+<div>
+    <p id="resultater">  </p>
+</div>
+<script>
+    let produkter=[]
+    let resultaterEl=document.querySelector("#resultater")
+
+    async function getprodukter() {
+        const data=await fetch('https://makeup-api.herokuapp.com/api/v1/products.json?brand=revlon')
+        const json= await data.json()
+        produkter=json
+        for(i=0;i<5;i++){
+        console.log(produkter[i].brand+", "+produkter[i].name)
+        }}
+    getprodukter()
+</script>
