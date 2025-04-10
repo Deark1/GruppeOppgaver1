@@ -26,9 +26,10 @@
 </html>
 
 <script>
-    let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)","TotalPris"];
-    let array2 = [679, 679, 879, 879, 779]; // Pris for 1-2 personer
-    let array3 = [979, 979, 1179, 1179, 1079]; // Pris for 3-4 personer
+    let array1 = ["Vegansk", "Vegetariansk", "Sjømat", "Kjøtt og fisk", "Familiekasse (Barnevenlig)"];
+    let array2 = [679, 679, 879, 879, 779];
+    let array3 = [979, 979, 1179, 1179, 1079]; 
+    
 
     let tbody = document.querySelector("tbody");
 
@@ -104,7 +105,7 @@
             pricePerUnit = array3[i];
             totalSpan.innerHTML = (value + 1) * pricePerUnit;
         };
-
+        
         minusKnapp2.onclick = function () {
             let value = parseInt(countSpan.innerHTML);
             if (value > 0) {
@@ -112,8 +113,8 @@
                 totalSpan.innerHTML = (value - 1) * pricePerUnit;
             }
         };
+        
 
-        // Add buttons to the table
         td2.appendChild(minusKnapp1);
         td2.appendChild(plussKnapp1);
         td3.appendChild(minusKnapp2);
