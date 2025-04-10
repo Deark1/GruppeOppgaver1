@@ -1,4 +1,4 @@
-const innloging = { brukernavn: "o", passord: "1" };
+const innloging = { brukernavn: "Furryblast", passord: "banan" };
 
 function loggInn() {
     const brukernavn = document.querySelector("#brukernavn").value;
