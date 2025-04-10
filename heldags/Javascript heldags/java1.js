@@ -28,3 +28,6 @@ function send (){
     }
 
 }
+
+localStorage.setItem("brukernavn", "Furryblast");
+localStorage.setItem("passord", "Banan");
