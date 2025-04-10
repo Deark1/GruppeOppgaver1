@@ -49,7 +49,7 @@
       // 4: MOTTAKER
       const mottakerCell = newRow.insertCell();
       const mottakerInput = document.createElement("input");
-      mottakerInput.type = "text";
+      mottakerInput.type = "email";
       mottakerInput.placeholder = "Mottaker Email";
       mottakerCell.appendChild(mottakerInput);
     

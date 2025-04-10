@@ -21,21 +21,25 @@ function loggInn() {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const buttonEl = document.querySelector("#loginnbutton");
-    buttonEl.addEventListener("click", loggInn);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
+    const kontonummerInput = document.querySelector("#kontonummer");
     const buttonEl = document.querySelector("#loginnbutton");
 
-    document.querySelector("#kontonummer").addEventListener("keydown", (e) => {
+    
+    kontonummerInput.addEventListener("keydown", (e) => {
         if (["e", "E", "+", "-", "."].includes(e.key)) {
             e.preventDefault();
         }
     });
+
+
+    kontonummerInput.addEventListener("input", (e) => {
+        e.target.value = e.target.value.replace(/\D/g, ""); 
+    });
+
 
     buttonEl.addEventListener("click", loggInn);
 });
 
 localStorage.setItem("brukernavn", "Furryblast");
 localStorage.setItem("passord", "Banan");
+
