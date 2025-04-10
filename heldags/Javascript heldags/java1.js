@@ -1,0 +1,1 @@
+innloging = {brukernavn: "", passord: ""};
