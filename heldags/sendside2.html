@@ -5,10 +5,28 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Page Title</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./CSS heldags/css1.css'>
     <script src='main.js'></script>
 </head>
 <body>
-    
+    <table border="1" id="tabell">
+        <tbody>
+                <tr>
+                    <th>Beløp</th>
+                    <th>Dato</th>
+                    <th>Mottaker</th>
+                </tr>
+        </tbody>
+    </table>
 </body>
 </html>
+<script>
+array1=["","",""]
+for (let i = 0; i<array1.length; i++){
+    let tr = document.createElement("tr");
+
+
+    let td1 = document.createElement("td");
+    td1.innerHTML = array1[i];
+    tr.appendChild(td1);}
+</script>
