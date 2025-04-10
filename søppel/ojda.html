@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <title>Interaktiv Tabell</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 10px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f4f4f4;
+    }
+    input[type="text"], input[type="number"], input[type="date"] {
+      width: 100%;
+      border: none;
+      padding: 4px;
+      box-sizing: border-box;
+    }
+    button {
+      padding: 8px 12px;
+      background-color: #0077cc;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+    button:hover {
+      background-color: #005fa3;
+    }
+  </style>
+</head>
+<body>
+<table id="dataTable">
+  <thead>
+    <tr>
+      <th>Saldo</th>
+      <th>Beløp</th>
+      <th>Dato</th>
+      <th>Mottaker</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<button onclick="leggTilRad()">Legg til rad</button>
+
+<script>
+    let startSaldo=100000
+  function leggTilRad() {
+    const table = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+    const newRow = table.insertRow();
+
+    for (let i = 0; i < 4; i++) {
+      const newCell = newRow.insertCell();
+      let inputType = "text";
+
+      if (i === 1 || i === 0) inputType = "number";
+      if (i === 2) inputType = "date";
+
+      const input = document.createElement("input");
+      input.type = inputType;
+      input.placeholder = i === 0 ? "Saldo" : i === 1 ? "Beløp I NOK" : i === 3 ? "Mottaker Email" : "";
+      input.addEventListener("input", oppdaterSummering);
+
+      newCell.appendChild(input);
+    }
+  }
+
+  function oppdaterSummering() {
+    // Kan utvides for å vise summer nederst eller annen funksjonalitet
+    console.log("Data endret. Du kan utvide denne funksjonen for summering osv.");
+  }
+</script>
+
+</body>
+</html>
