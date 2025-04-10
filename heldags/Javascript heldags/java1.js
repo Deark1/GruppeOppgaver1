@@ -1,5 +1,7 @@
 innloging = {brukernavn: "Furryblast", passord: "12345678"};
 
+
+
 function logginn(){
     let brukernavn = document.getElementById("brukernavn").value;
     let passord = document.getElementById("passord").value;
@@ -10,3 +12,4 @@ function logginn(){
         alert("Feil brukernavn eller passord.");
     }
 }
+
