@@ -1,4 +1,4 @@
-const innloging = { kontonummer: "10712345678", passord: "banan" };
+const innloging = { kontonummer: "10712345678", passord: "1234567" }; //Her kan du bytte passord og kontonummer om du vil.
 
 function loggInn() {
     const kontonummer = document.querySelector("#kontonummer").value.trim()
