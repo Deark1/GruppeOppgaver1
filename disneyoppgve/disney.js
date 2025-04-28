@@ -9,7 +9,7 @@ const disney = async () => {
     let figur = json;
 
     for (let i = 0; i < figur.data.length; i++) {
-        if (figur.data[i].name == navnEl.value) {
+        if (figur.data[i].name == navnEl.value || figur.data[i].name.toLowerCase() == navnEl.value.toLowerCase()) {
             console.log(i, figur.data[i].name, figur.data[i].films);
             resultatEl.innerHTML = `
                 ${figur.data[i].name} <br>
