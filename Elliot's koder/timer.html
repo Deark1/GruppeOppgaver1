@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Timer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            width: fit-content;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .container h1,
+        .container p {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Timer</h1>
+        <p id="tid">0</p>
+    </div>
+
+    <script>
+        const tidElm = document.getElementById("tid")
+        let tid = 0
+
+        function tell() {
+            tid++
+            tidElm.innerHTML = tid
+        }
+
+        setInterval(tell, 1000)
+    </script>
+</body>
+
+</html>
