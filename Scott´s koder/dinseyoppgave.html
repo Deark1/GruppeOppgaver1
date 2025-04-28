@@ -2,12 +2,29 @@
     <input type="text">
     <button>Søk</button>
     <p id="resultat"></p>
+    <button id="leggTil">Legg til i tabell</button>
+    <table id="liste">
+    <thead>
+        <tr>
+            <th>Navn</th>
+            <th>Bilde</th>
+            <th>Filmer</th>
+            <th>Videospill</th>
+            <th>Link til mer Info</th>
+        </tr>
+    </thead>
+    <tbody>
+     </tbody>
+    </table>
 </div>
 
 <script>
 let navnEl = document.querySelector("input");
 let resultatEl = document.querySelector("#resultat");
 let knappEl = document.querySelector("button");
+let tableEl = document.querySelector("#liste");
+let tbodyEl = document.querySelector("tbody");
+
 
 const disney = async () => {
     const url = "https://api.disneyapi.dev/character?page=1&pageSize=7438";
@@ -15,13 +32,17 @@ const disney = async () => {
     const json = await hent.json();
     let figur = json;
 
+    resultatEl.innerHTML = "";
+
     for (let i = 0; i < figur.data.length; i++) {
-        if (figur.data[i].name == navnEl.value || figur.data[i].name.toLowerCase() == navnEl.value.toLowerCase()) {
+        if (figur.data[i].name == navnEl.value || figur.data[i].name.toLowerCase() == navnEl.value.toLowerCase() || figur.data[i].name.toLowerCase().includes(navnEl.value.toLowerCase())
+        ) {
             console.log(i, figur.data[i].name, figur.data[i].films);
-            resultatEl.innerHTML = `
+            resultatEl.innerHTML += `
                 ${figur.data[i].name} <br>
                 <img src="${figur.data[i].imageUrl}" height="314" width="226"> <br>
-                <a href="${figur.data[i].sourceUrl}">Mer info</a>`
+                <a href="${figur.data[i].sourceUrl}">Mer info</a> <br><br>
+            `
         }
     }
 }
