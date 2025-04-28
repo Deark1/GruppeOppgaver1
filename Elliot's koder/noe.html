@@ -1,0 +1,100 @@
+<html><!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Oppgave 1</title>
+        <link rel="stylesheet" href="oppg1.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div>
+                <h1>Boks 1</h1>
+                <button id="knapp">Klikk meg</button>
+            </div>
+            <div>
+                <h1>Boks 2</h1>
+            </div>
+            <div>
+                <h1>Boks 3</h1>
+                <div id="boks3"></div>
+            </div>
+        </div>
+
+        <script src="oppg1.js"></script>
+    </body>
+</html></html>
+<style>* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+img {
+    width: 100%;
+}
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    display: grid;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.container > div {
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 20px;
+    background-color: aliceblue;
+    padding: 10px;
+    text-align: center;
+}
+
+#knapp {
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    font-size: 20px;
+    background-color: green;
+}
+#boks3 {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 14px;
+    gap: 3px;
+    margin-top: 30px;
+}</style>
+<script>
+const knapp = document.getElementById("knapp")
+
+    knapp.addEventListener("click", () => {
+        // Kunne gjerne også brukt css classList metoden her
+        if (knapp.style.backgroundColor == "red") {
+            knapp.style.backgroundColor = "blue"
+        } else {
+            knapp.style.backgroundColor = "red"
+        }
+    })
+    
+    const boks3 = document.getElementById("boks3")
+    
+    /*
+     Jeg gjorde kanskje litt unødvendig fancy her med å opprette
+     p elementer for hvert tall
+     Kunne også bare "bygget opp en tekst-streng", ved å
+     dytte inn ett og ett tall på slutten av strengen, og så
+     putte denne strengen inn i boks3
+    */
+    for (let i = 1; i < 100; i++) {
+        const pElm = document.createElement("p")
+        pElm.innerHTML = i
+        boks3.appendChild(pElm)
+    }</script>
