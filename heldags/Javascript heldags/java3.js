@@ -76,6 +76,7 @@ function leggTilRad() {
   });
 
   KontoNummerCell.appendChild(KontoNummerInput);
+  
 }
 
 // Legg til første rad automatisk når siden lastes
