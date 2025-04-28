@@ -12,6 +12,8 @@ const disney =async() =>{
     for(let i = 0;i<figur.data.length;i++){
         if(figur.data[i].name==knappEl){
             console.log(i, figur.data[i].name.figur[i].films)
+            reusultatEl.innerHTML='${figur.data[i].name}<br> <img src="${figur.data[i].imageUrl}" height="314" width="226"> <br> <a href="${figur.data[i].sourceUrl}>Mer info </a>"'
         }
     }
 }
+knappEl.addEventListener("click", disney)
