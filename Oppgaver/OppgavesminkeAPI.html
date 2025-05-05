@@ -9,8 +9,17 @@
         const data=await fetch('https://makeup-api.herokuapp.com/api/v1/products.json?brand=revlon')
         const json= await data.json()
         produkter=json
+        let html=""
         for(i=0;i<5;i++){
         console.log(produkter[i].brand+", "+produkter[i].name)
-        }}
+        html+=`<p>${produkter[i].brand},+" "${produkter[i].name}</p>`
+
+        }
+        resultaterEl.innerHTML=html
+}
     getprodukter()
+    
+
+
+    
 </script>

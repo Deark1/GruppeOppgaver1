@@ -1,0 +1,59 @@
+<script>
+let navnEl = document.querySelector("input");
+let resultatEl = document.querySelector("#resultat");
+let knappEl = document.querySelector("#søk");
+let figurTableEl = document.querySelector("#figurTable tbody");
+let addedFigures = new Set();
+
+
+const disney = async () => {
+    const url = "https://api.disneyapi.dev/character?page=1&pageSize=7438";
+    const hent = await fetch(url);
+    const json = await hent.json();
+    let figur = json;
+
+    let matchesFound = false;
+
+    for (let i = 0; i < figur.data.length; i++) {
+        if (figur.data[i].name == navnEl.value || figur.data[i].name.toLowerCase() == navnEl.value.toLowerCase() || figur.data[i].name.toLowerCase().includes(navnEl.value.toLowerCase())){
+            matchesFound = true;
+            console.log(i, figur.data[i].name, figur.data[i].films);
+            resultatEl.innerHTML += `
+                ${figur.data[i].name} <br>
+                <img src="${figur.data[i].imageUrl}" height="314" width="226"> <br>
+                <a href="${figur.data[i].sourceUrl}">Mer info</a>
+                <button class="leggTil">Legg til i tabell</button>`
+        }
+    }
+    if (!matchesFound) {
+        resultatEl.innerHTML = `<p>Ingen figurer funnet. Sjekk stavemåten eller prøv et annet navn.</p>`;
+    }
+}
+document.querySelectorAll('.leggTil').forEach(button => {
+    button.addEventListener('click', function() {
+        const navn = this.previousElementSibling.previousElementSibling.previousElementSibling.innerText;
+        const år = figur.data[i].year || "Ukjent år"; 
+        const bilde = figur.data[i].imageUrl;
+        const link = figur.data[i].sourceUrl;
+        karakter(navn, år, bilde, link);
+    });
+});
+
+
+const karakter = (navn,år,bilde,link)=>{
+    if(addedFigures.has(navn)){
+        return
+    }
+    
+    addedFigures.add(navn); 
+
+    let row = figurTableEl.insertRow();
+    row.insertCell(0).textContent = navn;
+    row.insertCell(1).textContent = år || "Ukjent år";
+    row.insertCell(2).innerHTML = `<img src="${bilde}" height="100" width="75">`;
+    row.insertCell(3).innerHTML = `<a href="${link}" target="_blank">Mer info</a>`;
+
+}
+
+knappEl.addEventListener("click", disney);
+</script>

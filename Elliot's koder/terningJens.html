@@ -1,0 +1,47 @@
+<html>
+    <button>Throw Dice</button>
+</html>
+
+<script>
+
+let summer=0
+let ganger=1000
+let summerTelling = { 2: 0, 3: 0, 4: 0, 5: 0, 6: 0, 7: 0, 8: 0, 9: 0, 10: 0,  11: 0,  12: 0};
+let knapp=document.querySelector("button")
+let gangergj=ganger
+
+knapp.addEventListener("click",function repeat() {
+    let summerArray = []
+for(let i=0;i<=ganger;i++){
+    let terningKast1 = Math.floor(Math.random() * 6) + 1;
+    let terningKast2 = Math.floor(Math.random() * 6) + 1;
+    let sum=terningKast1+terningKast2
+    console.log("kast:", i, "Terning 1: ",terningKast1)
+    console.log("kast :",i, "Terning 2: ",terningKast2)
+
+    summer+=sum
+    summerTelling[sum]++
+    summerArray.push(sum);    
+    }
+    
+let gjennomsnitt=summer/gangergj 
+console.log("Gjennomsnitt :", gjennomsnitt)
+
+let variansSum = 0;
+    for (let i = 0; i < summerArray.length; i++) {
+        variansSum += Math.pow(summerArray[i] - gjennomsnitt, 2);
+    }
+    let varians = variansSum / ganger;
+    let standardAvvik = Math.sqrt(varians);
+    console.log("Standardavvik:", standardAvvik.toFixed(2));
+
+for(let sum=2;sum<=12;sum++){
+    console.log(`Antall ${sum}-ere: ${summerTelling[sum]}`)
+}
+gangergj+=ganger
+for (let reset in summerTelling) {
+    summerTelling[reset] = 0;
+}
+});
+
+</script>
