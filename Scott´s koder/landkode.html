@@ -1,0 +1,45 @@
+ <!DOCTYPE html>
+ <html>
+ <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Land</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src='dropdownliste.js'></script>
+ </head>
+ </html>
+<body>
+    <p></p>
+    <input type="tekst" id="navn" placeholder="Ola Nordmann" required>
+    <input type="text" id="mail" placeholder="abc07@gmail.com" required>
+    <input type="options">
+    <input type="number" id="telefon" placeholder="123 45 678" required>
+</body>
+<script>
+
+    const hentjson = async () => {
+        const hent = await fetch("https://country-code-au6g.vercel.app/Country.json")
+        const json = await hent.json() 
+        let data1 = json
+        console.log(data1)
+    }
+
+    let avsnittEl = document.querySelector("p")
+    let navnEl = document.querySelector("#navn")
+    let mailEl = document.querySelector("#mail")
+    let telefonNummerEl = document.querySelector("#telefon")
+    console.log(land)
+
+    function unicodeToHexHtml(tekst){
+        let hexArray=tekst.split(" ");
+        let resultat = "";
+        for(i of hexArray){
+            let hex = i.replace("U+","")
+            resultat+=`&#x${hex}`
+        }
+        return resultat
+    }
+
+    //let tekst = "U+1F1E6 U+1F1E9"
+    //avsnittEL.innerHTML=unicodeToHexHtml(tekst)
+</script>
