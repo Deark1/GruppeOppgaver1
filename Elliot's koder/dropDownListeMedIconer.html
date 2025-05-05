@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='main.css'>
+    <script src='dropDownListe.js'></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Registreringsskjema</h1>
+        <p></p>        
+        <input type="tekst" id="navn" placeholder="Ola Nordmann" required>
+        <input type="tekst" id="mail" placeholder="abc@gmail.com" required>
+        <input type="text" id="countrySearch" placeholder="Søk etter land..." oninput="filterCountries()">
+        <select id="countrySelect" size="5" onclick="showDialCode()">
+            <option value="">Velg et land</option>
+            
+        </select>
+        <div id="dial-code"></div>
+    
+        <input type="tekst" id="telefon" placeholder="12345678" required>
+
+
+    </div>
+</body>
+</html>
+<script>
+    
+    function filterCountries() {
+            let input = document.getElementById('countrySearch').value.toUpperCase();
+            let select = document.getElementById('countrySelect');
+            select.innerHTML = '<option value="">Velg et land</option>'; // Clear existing options
+
+            // Filter the countries based on input
+            countries.forEach(country => {
+                if (country.name.toUpperCase().startsWith(input)) {
+                    let option = document.createElement('option');
+                    option.value = country.name;
+                    option.textContent = `${country.emoji} ${country.name}`;
+                    select.appendChild(option);
+                }
+            });
+        }
+        function showDialCode() {
+            let select = document.getElementById('countrySelect');
+            let dialCodeDiv = document.getElementById('dial-code');
+            let selectedCountryName = select.value;
+
+            // Find the selected country and show the dial code
+            let country = countries.find(c => c.name === selectedCountryName);
+            if (country) {
+                dialCodeDiv.textContent = `Dial kode for ${country.name}: ${country.dial_code}`;
+            } else {
+                dialCodeDiv.textContent = '';
+            }
+        }
+   
+    
+
+    
+    
+</script>
+
+
+
+
+
+<script>
+    /*function unicodeToHexHtml(tekst){
+        let hexArray=tekst.split(" ")
+        let resultat="";
+
+        for(i of hexArray){
+            let hex= i.replace("U+","")
+            resultat+=`&#x${hex}`
+        }
+        return resultat
+    }
+         const hentjson= async function(){
+        const hent= await fetch("https://country-code-au6g.vercel.app/Country.json")
+        const json= await hent.json()
+        let data1=json
+        console.log(data1)
+    }
+    hentjson()
+    let tekst="U+1F1E6 U+1F1E9"
+    avsnittEl.innerHTML=unicodeToHexHtml(tekst)*/
+</script>
