@@ -25,16 +25,22 @@
 
 
     </div>
+    <button id="lagre">Lagre info</button>
+        <button id="reset">Reset info</button>
 </body>
 </html>
 <script>
+    const lagreKnapp = document.getElementById("lagre");
+    const navn=document.getElementById("navn")
+    const mail=document.getElementById("mail")
+    const countrysearch=document.getElementById("countrysearch")
+
     
     function filterCountries() {
             let input = document.getElementById('countrySearch').value.toUpperCase();
             let select = document.getElementById('countrySelect');
-            select.innerHTML = '<option value="">Velg et land</option>'; // Clear existing options
+            select.innerHTML = '<option value="">Velg et land</option>'; 
 
-            // Filter the countries based on input
             countries.forEach(country => {
                 if (country.name.toUpperCase().startsWith(input)) {
                     let option = document.createElement('option');
@@ -49,7 +55,6 @@
             let dialCodeDiv = document.getElementById('dial-code');
             let selectedCountryName = select.value;
 
-            // Find the selected country and show the dial code
             let country = countries.find(c => c.name === selectedCountryName);
             if (country) {
                 dialCodeDiv.textContent = `Dial kode for ${country.name}: ${country.dial_code}`;
@@ -58,7 +63,14 @@
             }
         }
    
-    
+        lagreKnapp.addEventListener("click", function () {
+            let navn = navn.value;
+            localStorage.setItem("navn", navn);
+        });
+        resetButton.addEventListener("click", function(){
+            navn.value= "";
+            localStorage.setItem("", "")
+        })
 
     
     
